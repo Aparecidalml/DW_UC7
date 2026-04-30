@@ -1,0 +1,9 @@
+POST http://localhost:3000/curso
+Content-Type: 'application/x-www-form-urlencoded'
+
+curso=DS&ch=1200&tipo=tecnico
+
+###
+
+GET http://localhost:3000
+
