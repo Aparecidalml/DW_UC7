@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
          res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})   
         res.end(fs.readFileSync('cadastro.html', 'utf-8'))
     } else if(req.url === '/curso' && req.method === 'POST'){
-        res.writeHead(200, {"content-type": 'text/html; charset=utf-8'}) //resposta - página HTML
+        // res.writeHead(200, {"content-type": 'text/html; charset=utf-8'}) //resposta - página HTML
         // res.writeHead(200, {"content-type": 'aplication/json; charset=utf-8'}) //resposta - JSON
         let dados = ''
         req.on('data', chunk => {
@@ -32,10 +32,13 @@ const server = http.createServer((req, res) => {
             //     <h3> Curso: ${dados_req1.curso} <br> 
             //     Carga Horária: ${dados_req1.ch} <br> 
             //     Tipo: ${dados_req2.get('tipo')} </h3>`)// resposta em HTML
-            res.end(JSON.stringify({
-                curso: dados_req1.curso, 
-                ch: dados_req1.ch, 
-                tipo: dados_req2.get('tipo')})) // resposta em JSON
+            // res.end(JSON.stringify({
+            //     curso: dados_req1.curso, 
+            //     ch: dados_req1.ch, 
+            //     tipo: dados_req2.get('tipo')})) // resposta em JSON
+
+            res.writeHead(302, {'Location': `/cursos` }) // redireciona para a página de cursos após o cadastro
+            res.end()
            
         })
 
